@@ -1,12 +1,17 @@
 import React from "react";
 import "./App.css";
-
-import Homepage from "./pages/Homepage";
+// import AuthPage from "./pages/AuthPage";
+// import Homepage from "./pages/Homepage";
+// import ShopPage from "./pages/ShopPage";
+// import ContactPage from "./pages/ContactPage";
 
 function App() {
   return (
     <React.Fragment>
-      <Homepage />
+      {/* <Homepage /> */}
+      {/* <ShopPage /> */}
+      {/* <ContactPage/> */}
+      {/* <AuthPage/> */}
     </React.Fragment>
   );
 }
