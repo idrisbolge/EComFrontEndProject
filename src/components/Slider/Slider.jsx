@@ -1,33 +1,52 @@
-import './Slider.css'
-import SliderItem from './SliderItem'
+import { useState } from "react";
+import "./Slider.css";
+import SliderItem from "./SliderItem";
+import PropType from "prop-types"
 
 const Slider = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const nextSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % 3);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide - 1 + 3) % 3);
+  };
+
   return (
     <section className="slider">
-    <div className="slider-elements">
-      <SliderItem />
-      <div className="slider-buttons">
-        <button >
-          <i className="bi bi-chevron-left"></i>
-        </button>
-        <button >
-          <i className="bi bi-chevron-right"></i>
-        </button>
-      </div>
-      <div className="slider-dots">
-        <button className="slider-dot active">
-          <span></span>
-        </button>
-        <button className="slider-dot">
-          <span></span>
-        </button>
-        <button className="slider-dot" >
-          <span></span>
-        </button>
-      </div>
-    </div>
-  </section>
-  )
-}
+      <div className="slider-elements">
+        {currentSlide === 0 && <SliderItem imageSrc="img/slider/slider1.jpg" />}
+        {currentSlide === 1 && <SliderItem imageSrc="img/slider/slider2.jpg" />}
+        {currentSlide === 2 && <SliderItem imageSrc="img/slider/slider3.jpg" />}
 
-export default Slider
+        <div className="slider-buttons">
+          <button>
+            <i className="bi bi-chevron-left" onClick={prevSlide}></i>
+          </button>
+          <button>
+            <i className="bi bi-chevron-right" onClick={nextSlide}></i>
+          </button>
+        </div>
+        <div className="slider-dots">
+          <button className={`slider-dot ${ currentSlide === 0 ? "active" : ""} `} onClick={()=>setCurrentSlide(0)}>
+            <span></span>
+          </button>
+          <button className={`slider-dot ${ currentSlide === 1 ? "active" : "" } ` }onClick={()=>setCurrentSlide(1) }>
+            <span></span>
+          </button>
+          <button className={`slider-dot ${ currentSlide === 2  ? "active" : ""} `} onClick={()=>setCurrentSlide(2) }>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Slider;
+
+SliderItem.prototype ={
+  currentSlide : PropType.string
+  , setCurrentSlide : PropType.func
+}
