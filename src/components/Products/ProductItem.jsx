@@ -1,6 +1,7 @@
 import './ProductItem.css'
 
 const ProductItem = () => {
+  
   return (
     <li className="product-item glide__slide glide__slide--active">
       <div className="product-image">
