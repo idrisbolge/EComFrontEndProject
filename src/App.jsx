@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import ProductPage from "./pages/ProductDetailPage";
-// import CartPage from "./pages/CartPage";
+// import ProductPage from "./pages/ProductDetailPage";
+import CartPage from "./pages/CartPage";
 // import AuthPage from "./pages/AuthPage";
 // import Homepage from "./pages/Homepage";
 // import ShopPage from "./pages/ShopPage";
@@ -15,10 +15,10 @@ function App() {
       {/* <ShopPage /> */}
       {/* <ContactPage/> */}
       {/* <AuthPage/> */}
-      {/* <CartPage/> */}
+      <CartPage/>
       {/* <BlogPage /> */}
       {/* <BlogDetailPage/> */}
-      <ProductPage />
+      {/* <ProductPage /> */}
     </React.Fragment>
   );
 }
