@@ -1,25 +1,24 @@
-import React from "react";
 import "./App.css";
-// import ProductPage from "./pages/ProductDetailPage";
+import { Route, Routes } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import ShopPage from "./pages/ShopPage";
+import BlogPage from "./pages/BlogPage";
+import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
-// import AuthPage from "./pages/AuthPage";
-// import Homepage from "./pages/Homepage";
-// import ShopPage from "./pages/ShopPage";
-// import ContactPage from "./pages/ContactPage";
-// import BlogPage from "./pages/BlogPage"
-// import BlogDetailPage from "./pages/BlogDetailPage";
+import AuthPage from "./pages/AuthPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+
 function App() {
   return (
-    <React.Fragment>
-      {/* <Homepage /> */}
-      {/* <ShopPage /> */}
-      {/* <ContactPage/> */}
-      {/* <AuthPage/> */}
-      <CartPage/>
-      {/* <BlogPage /> */}
-      {/* <BlogDetailPage/> */}
-      {/* <ProductPage /> */}
-    </React.Fragment>
+    <Routes>
+      <Route path="/" element={<Homepage />} />
+      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/auth" element={<AuthPage />} />
+      <Route path="/product/:id" element={<ProductDetailPage />} />
+    </Routes>
   );
 }
 
