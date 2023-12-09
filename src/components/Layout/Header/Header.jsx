@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 const Header = ({ setIsSearchShow }) => {
   const { cartItems } = useContext(CartContext);
   const { pathname } = useLocation();
+  const user = localStorage.getItem("user");
 
   return (
     <header>
@@ -74,7 +75,12 @@ const Header = ({ setIsSearchShow }) => {
                     </div>
                   </li>
                   <li className="menu-list-item megamenu-wrapper">
-                    <Link to={"/shop"} className={`menu-link ${pathname === "/shop" && "active"}`}>
+                    <Link
+                      to={"/shop"}
+                      className={`menu-link ${
+                        pathname === "/shop" && "active"
+                      }`}
+                    >
                       Shop
                       <i className="bi bi-chevron-down"></i>
                     </Link>
@@ -181,12 +187,22 @@ const Header = ({ setIsSearchShow }) => {
                     </div>
                   </li>
                   <li className="menu-list-item">
-                    <Link to={"/blog"} className={`menu-link ${pathname === "/blog" && "active"}`}>
+                    <Link
+                      to={"/blog"}
+                      className={`menu-link ${
+                        pathname === "/blog" && "active"
+                      }`}
+                    >
                       Blog
                     </Link>
                   </li>
                   <li className="menu-list-item">
-                    <Link to={"/contact"} className={`menu-link ${pathname === "/contact" && "active"}`}>
+                    <Link
+                      to={"/contact"}
+                      className={`menu-link ${
+                        pathname === "/contact" && "active"
+                      }`}
+                    >
                       Contact
                     </Link>
                   </li>
@@ -205,9 +221,10 @@ const Header = ({ setIsSearchShow }) => {
                 >
                   <i className="bi bi-search"></i>
                 </button>
-                <a href="#">
+
+                {/* <a href="#">
                   <i className="bi bi-heart"></i>
-                </a>
+                </a> */}
                 <div className="header-cart">
                   <Link to={"/cart"} className="header-cart-link">
                     <i className="bi bi-bag"></i>
@@ -216,6 +233,19 @@ const Header = ({ setIsSearchShow }) => {
                     </span>
                   </Link>
                 </div>
+                {user && (
+                  <button
+                    className="search-button"
+                    onClick={() => {
+                      if(window.confirm("Çıkış yapmak istediğinize emin misiniz?")){
+                        localStorage.removeItem("user")
+                        window.location.href = "/"
+                      }
+                    }}
+                  >
+                    <i className="bi bi-box-arrow-right"></i>
+                  </button>
+                )}
               </div>
             </div>
           </div>

@@ -10,13 +10,14 @@ const MainLayout = ({ children }) => {
   const [isSearchShow, setIsSearchShow] = useState(false);
   const [isDialogShow, setIsDialogShow] = useState(false);
 
+  
   useEffect(() => {
     const dialogStatus = localStorage.getItem("dialog")
       ? JSON.parse(localStorage.getItem("dialog"))
-      : localStorage.setItem("dialog", JSON.stringify(dialogStatus));
+      : localStorage.setItem("dialog", JSON.stringify(true));
 
     setTimeout(() => {
-      setIsDialogShow(false);
+      setIsDialogShow(dialogStatus);
     }, 2000);
   }, []);
 
