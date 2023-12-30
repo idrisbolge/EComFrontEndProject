@@ -6,7 +6,7 @@ const CartTotal = () => {
   const { cartItems } = useContext(CartContext);
 
   const cartItemsTotals = cartItems.map((item) => {
-    const itemTotal = item.price.newPrice * item.quantity;
+    const itemTotal = (item.price.current-item.price.current*item.price.discount/100) * item.quantity;
     return itemTotal;
   });
 

@@ -2,8 +2,9 @@ import ProductItem from "./ProductItem";
 import "./Product.css";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
-import ProductsData from "../../data.json";
 import { useState } from "react";
+import { useEffect } from "react";
+import { message } from "antd";
 
 function NextBtn({ onClick }) {
   return (
@@ -29,8 +30,25 @@ PrevBtn.propTypes = {
 };
 
 const Product = () => {
-  const [products] = useState(ProductsData);
+  const [products,setProducts] = useState([]);
   
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/products`);
+        const data = await response.json();
+
+        if (response.ok) {
+          setProducts(data);
+        } else message.error("Ürün Getirme İşleminde Hata Alındı.");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProducts();
+  }, [apiUrl]);
 
   const sliderSettings = {
     dots: false,
@@ -69,7 +87,7 @@ const Product = () => {
             {products.map((product) => (
               <ProductItem
                 productItem={product}
-                key={product.id}
+                key={product._id}
               />
             ))}
           </Slider>

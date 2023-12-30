@@ -2,18 +2,19 @@ import { useContext } from "react";
 import "./ProductItem.css";
 import propTypes from "prop-types";
 import { CartContext } from "../../context/CartProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ProductItem = ({ productItem }) => {
   const { addToCart, cartItems } = useContext(CartContext);
-  const filteredCart = cartItems.find((cartItem)=> cartItem.id=== productItem.id);
+  const filteredCart = cartItems.find((cartItem)=> cartItem._id=== productItem._id);
 
   return (
     <li className="product-item glide__slide glide__slide--active">
       <div className="product-image">
         <a href="#">
-          <img src={productItem.img.singleImage} alt="" className="img1"></img>
-          <img src={productItem.img.thumbs[1]} alt="" className="img2"></img>
+          
+          <img src={productItem.img[0]} alt="" className="img1"></img>
+          <img src={productItem.img[1]} alt="" className="img2"></img>
         </a>
       </div>
       <div className="product-info">
@@ -39,13 +40,13 @@ const ProductItem = ({ productItem }) => {
         </ul>
         <div className="product-prices">
           <strong className="new-price">
-            {productItem.price.oldPrice.toFixed(2)}
+            {(parseFloat(productItem.price.current) * parseInt(productItem.price.discount) / 100).toFixed(2)}
           </strong>
           <span className="old-price">
-            {productItem.price.newPrice.toFixed(2)}
+            { productItem.price.current.toFixed(2)} 
           </span>
         </div>
-        <span className="product-discount">{productItem.discount}%</span>
+        <span className="product-discount">{productItem.price.discount}%</span>
         <div className="product-links">
           <button
             className="add-to-cart"
@@ -57,7 +58,7 @@ const ProductItem = ({ productItem }) => {
           <button>
             <i className="bi bi-heart-fill"></i>
           </button>
-          <Link to= {`product/${productItem.id}`} className="product-link" onClick={(e)=>{
+          <Link to= {`product/${productItem._id}`} className="product-link" onClick={()=>{
 
           }}>
             <i className="bi bi-eye-fill"></i>

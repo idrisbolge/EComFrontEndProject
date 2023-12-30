@@ -12,6 +12,7 @@ const CartTable = () => {
           <th className="product-thumbnail">&nbsp;</th>
           <th className="product-name">Product</th>
           <th className="product-price">Price</th>
+          <th className="product-discount">Discount</th>
           <th className="product-quantity">Quantity</th>
           <th className="product-subtotal">Subtotal</th>
         </tr>
@@ -20,7 +21,7 @@ const CartTable = () => {
 
         {
           cartItems.map((item)=>(
-            <CartItem cartItem={item}  key={item.id}/>
+            <CartItem cartItem={item}  key={item._id}/>
           ))
         }
         
