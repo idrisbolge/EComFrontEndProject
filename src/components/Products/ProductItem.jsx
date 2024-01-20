@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const ProductItem = ({ productItem }) => {
   const { addToCart, cartItems } = useContext(CartContext);
+  
   const filteredCart = cartItems.find((cartItem)=> cartItem._id=== productItem._id);
 
   return (

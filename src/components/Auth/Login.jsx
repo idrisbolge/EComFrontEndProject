@@ -48,7 +48,7 @@ const Login = () => {
             <span>
               Username or email address <span className="required">*</span>
             </span>
-            <input name="email" type="text" onChange={handleInputChange} />
+            <input name="email" type="text" onChange={handleInputChange} required  />
           </label>
         </div>
         <div>
@@ -60,6 +60,7 @@ const Login = () => {
               name="password"
               type="password"
               onChange={handleInputChange}
+              required 
             />
           </label>
         </div>

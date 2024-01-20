@@ -2,6 +2,7 @@ import { message } from "antd";
 import "./Search.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import Link from "antd/es/typography/Link";
 
 const Search = ({ isSearchShow, setIsSearchShow }) => {
   const apiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -80,7 +81,12 @@ const Search = ({ isSearchShow, setIsSearchShow }) => {
             )}
             {searchResults?.length > 0 &&
               searchResults?.map((resultItem) => (
-                <a href="#" className="result-item" key={resultItem._id}>
+                
+                <Link
+                  to={`product/${resultItem._id}`}
+                  className="result-item"
+                  key={resultItem._id}
+                >
                   <img
                     src={resultItem.img[0]}
                     className="search-thumb"
@@ -93,7 +99,7 @@ const Search = ({ isSearchShow, setIsSearchShow }) => {
                       ${resultItem.price.current.toFixed(2)}
                     </span>
                   </div>
-                </a>
+                  </Link>
               ))}
           </div>
         </div>

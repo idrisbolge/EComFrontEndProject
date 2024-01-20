@@ -17,6 +17,9 @@ import ProductPage from "./pages/Admin/Products/ProductPage";
 import CouponPage from "./pages/Admin/Coupons/CouponPage";
 import CreateCouponPage from "./pages/Admin/Coupons/CreateCouponPage";
 import UpdateCouponPage from "./pages/Admin/Coupons/UpdateCouponPage";
+import SuccessPage from "./pages/SuccessPage";
+import OrderPage from "./pages/Admin/OrderPage";
+import DashboardPage from "./pages/Admin/DashboardPage";
 
 function App() {
   return (
@@ -28,9 +31,13 @@ function App() {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/product/:id" element={<ProductDetailPage />} />
+      <Route path="/success" element={<SuccessPage />} />
+      
 
       <Route path="/admin/*">
+      <Route index element={<DashboardPage />} />
         <Route path="users" element={<UserPage />} />
+        <Route path="orders" element={<OrderPage />} />
         <Route path="categories" element={<CategoryPage />} />
         <Route path="categories/update/:id" element={<UpdateCategoryPage />} />
         <Route path="categories/create" element={<CreateCategoryPage />} />
